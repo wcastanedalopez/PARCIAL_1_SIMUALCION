@@ -1,0 +1,131 @@
+---
+title: '**SIMULACIÓN Y TEORÍA DE LA DECISIÓN <br> PARCIAL #1**'
+author: ' Jean Michael Mendoza - William Jose Castañeda'
+date: "Marzo 25, 2022"
+geometry: margin=1in
+output:
+  pdf_document: default
+  word_document: default
+  html_document: default
+---
+
+---
+
+<br>
+<div style="text-align: justify">
+### 1. La tabla mostrada contiene valores de población, en cientos de miles, de las diez ciudades más pobladas de cuatro países en el año 1967:
+
+
+ Argentina | EE.UU | Holanda | Japón
+ --|--|--|--|
+29.66 | 77.81 | 8.68 | 110.21
+7.61 | 35.50 | 7.31 | 32.14
+6.35 | 24.79 | 6.02 | 18.88
+4.10 | 20.02 | 2.64 | 16.38
+3.80 | 16.70 | 1.75 | 13.37
+2.75 | 9.39 | 1.72 | 11.92
+2.70 | 9.38 | 1.51 | 10.71
+2.69 | 8.76 | 1.42 | 7.80
+2.51 | 7.63 | 1.31 | 7.70
+2.44 | 7.50 | 1.29 | 7.00
+
+```{r, echo=FALSE}
+```
+>
+<p>
+##### **a. Construya un box-plot e identifique los puntos extremos.**
+**¿Cuáles son las características más sobresalientes? ¿Hay outliers?**
+</p>
+
+```{r, echo=FALSE}
+#Creación de los vectores de datos de las ciudades
+argentina <- {c(29.66, 7.61, 6.35, 4.10, 3.80, 2.75, 2.70, 2.69, 2.51, 2.44)};
+EEUU <- {c(77.81, 35.50, 24.79, 20.02, 16.70, 9.39,  9.38,  8.76, 7.63, 7.50)};
+holanda <- {c(8.68, 7.31, 6.02, 2.64, 1.75, 1.72, 1.51, 1.42, 1.31, 1.29)};
+japon <- {c(110.21, 32.14, 18.88, 16.38, 13.37, 11.92, 10.71, 7.80, 7.70, 7.00)};
+```
+
+```{r, echo=FALSE}
+#Creación del Boxplot
+attach(mtcars)
+boxplot(argentina,EEUU,holanda,japon, main = "Población ", 
+     xlab = "Cantidad de población (Ciento de miles)", ylab = "Frecuencia", horizontal= TRUE,
+     col = c("orange", "green", "red", "blue") )
+legend("bottomright", inset=.001, title="Ciudades",
+   c("Argentina","EEUU","Holanda","Japon"), fill= c("orange", "green", "red", "blue"), horiz=TRUE, cex=0.8)
+
+```
+<br>
+
+
+>
+**Entre las caracteristicas mas sobresalientes podemos notar que:** <br>
+<p>
+- la densidad poblacional de las ciudades de argentina y holanda no presentan una 
+desviación tan considerable con respecto a las ciudades de los otros paises. <br>
+- la ciudades de holanda no presentan una densidad poblacional atipica. <br>
+- la media poblacional de las ciudades de japon y EEUU supera la densidad 
+poblacional de las ciudades mas pobladas de argentina
+</p>
+
+>
+ **Se puede concluir que existen outliers. Se puede evidenciar que:** <br>
+<p>
+- en japón existe una ciudad cuya cantidad de habitantes es atipica, 
+aproximadamente 11.021.000 de habitantes. <br>
+- en EEUU existe una ciudad cuya cantidad de habitantes es atipica, 
+aproximadamente 7.781.000 de habitantes. <br>
+- en argentina existe una ciudad cuya cantidad de habitantes es atipica, 
+aproximadamente 2.966.000 de habitantes.
+</p>
+
+<br>
+
+##### **b. Compare los centros de cada población, sus dispersiones y su simetría. ¿Cuál es el país más homogéneamente habitado? ¿Cuáles son las características más sobresalientes? ¿Hay outliers?**
+
+>
+<p> El pais mas homogeneamente habitado es japon, entre las caracteristicas mas sobresalientes, podemos ver que: <br>
+- Las ciudades de los paises de holanda y argentina tienen una distribución mas dispersa en comparación con las otras ciudades de los otros paises <br>
+- La distribución de las ciudades del pais de japon es simetrica. <br>
+- La distribución de las ciudades de los paises de argentina, holanda y EEUU presentan una asimetria positiva <br>
+</p>
+
+
+<br>
+
+<p>
+### 2. Avianca se encuentra estudiando la situación de venta de puesto en el vuelo Armenia – Bogotá puesto que ha identificado que el 2% de las personas que reservaron puesto, no se presentan a la hora del embarque. Teniendo en cuenta que el avión A320 utilizado en esta ruta tiene una capacidad para 180 pasajeros, la empresa decide vender 181 tiquetes. ¿Cuál es la probabilidad de que todas las personas que llegan a embarque puedan tener su silla asegurada y no se presenten quejas por “sobre-vender” sillas ante la aeronáutica civil? Asuma que las llegadas de los pasajeros siguen una distribución Poisson. 
+</p>
+
+```{r, echo=FALSE}
+
+numTiquetes=181
+capacidadPasajeros=180
+porcentajeCancelacionReserva=0.02
+
+#Forma 2
+probabilidad2=(ppois(capacidadPasajeros,porcentajeCancelacionReserva*numTiquetes))*100
+
+```
+>
+<p>
+La probabilidad de que todas las personas que llegan a embarque puedan tener su silla asegurada y no se presenten quejas por “sobre-vender” sillas ante la aeronáutica civil es del `r probabilidad2`%
+</p>
+<br>
+
+<p>
+### 3. En la planta envasadora de Coca-Cola FEMSA ubicada en Tocancipá se realiza el embotellado de la Coca Cola presentación de 400 mL (en promedio), con una desviación estándar de 5 mL (mililitros). Si se sabe por experiencia que este proceso de embotellado sigue una distribución normal, y también se sabe que todo producto con más de 415 mL es declarado como NO CONFORME. Determine el porcentaje de las botellas de gaseosa que son declaradas producto NO CONFORME. 
+</p>
+
+```{r, echo=FALSE}
+
+productoNoConforme=415
+presentacionCocaCola=400
+desviacion=5
+
+#P(X > 415)
+prob= (pnorm(productoNoConforme, presentacionCocaCola, desviacion, lower.tail = FALSE))*100
+
+```
+>
+El porcentaje de las botellas de gaseosa que son declaradas producto **NO CONFORME**, es del `r prob`%
