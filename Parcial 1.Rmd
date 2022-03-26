@@ -84,7 +84,8 @@ aproximadamente 2.966.000 de habitantes.
 ##### **b. Compare los centros de cada población, sus dispersiones y su simetría. ¿Cuál es el país más homogéneamente habitado? ¿Cuáles son las características más sobresalientes? ¿Hay outliers?**
 
 >
-<p> El pais mas homogeneamente habitado es japon, entre las caracteristicas mas sobresalientes, podemos ver que: <br>
+El pais mas homogeneamente habitado es japon, entre las caracteristicas mas sobresalientes, podemos ver que: <br>
+<p>
 - Las ciudades de los paises de holanda y argentina tienen una distribución mas dispersa en comparación con las otras ciudades de los otros paises <br>
 - La distribución de las ciudades del pais de japon es simetrica. <br>
 - La distribución de las ciudades de los paises de argentina, holanda y EEUU presentan una asimetria positiva <br>
